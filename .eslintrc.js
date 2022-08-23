@@ -2,28 +2,14 @@ module.exports = {
     root: true,
 
     env: {
-        node: true
+        node: true,
     },
 
     parserOptions: {
-        ecmaVersion: 2020
+        ecmaVersion: 2020,
     },
 
     rules: {
-        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'no-mixed-spaces-and-tabs': 'error',
-        'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': [
-            'warn',
-            {
-                argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_'
-            }
-        ],
-        'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': ['error', 'nofunc'],
-        '@typescript-eslint/no-non-null-assertion': 'off',
         'semi': ['error', 'always'],
         'prefer-const': ['off'],
         'max-len': [
@@ -33,19 +19,53 @@ module.exports = {
                 ignoreTrailingComments: true,
                 ignoreComments: true,
                 ignoreStrings: true,
-                ignoreTemplateLiterals: true
-            }
+                ignoreTemplateLiterals: true,
+            },
         ],
+        'comma-dangle': ['error', 'always-multiline'],
+
+        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+        'no-duplicate-case': 'error',
+        'no-irregular-whitespace': 'warn',
+        'no-mixed-spaces-and-tabs': 'error',
         'no-trailing-spaces': [
             'warn',
             {
                 skipBlankLines: true,
-                ignoreComments: true
-            }
+                ignoreComments: true,
+            },
         ],
-        'no-duplicate-case': 'error',
-        'no-irregular-whitespace': 'warn'
+        'no-unused-vars': [
+            'warn',
+            {
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+            },
+        ],
+        'no-use-before-define': ['error', 'nofunc'],
     },
 
-    extends: ['eslint:recommended']
+    extends: ['eslint:recommended'],
+
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+            rules: {
+                'no-unused-vars': 'off',
+                '@typescript-eslint/no-unused-vars': [
+                    'warn',
+                    {
+                        argsIgnorePattern: '^_',
+                        varsIgnorePattern: '^_',
+                    },
+                ],
+                'no-use-before-define': 'off',
+                '@typescript-eslint/no-use-before-define': ['error', 'nofunc'],
+                '@typescript-eslint/ban-ts-comment': 'warn',
+                'comma-dangle': 'off',
+                '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
+            },
+        },
+    ],
 };
