@@ -1,0 +1,54 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app.dockerfile
+    image: playground-app:dev
+    container_name: playground-app
+    ports:
+      - 8000:8000
+    volumes:
+      - ../:/app
+    stdin_open: true
+    tty: true
+
+  postgres:
+    image: postgres:alpine
+    container_name: playground-postgres
+    restart: always
+    env_file:
+      - ../env/postgres.env
+
+  mongo:
+    image: mongo:latest
+    container_name: playground-mongo
+    restart: always
+    env_file:
+      - ../env/mongo.env
+
+  adminer:
+    depends_on:
+      - postgres
+    image: adminer:latest
+    container_name: playground-adminer
+    restart: always
+    ports:
+      - 8001:8080
+
+  mongo-express:
+    depends_on:
+      - mongo
+    image: mongo-express:latest
+    container_name: playground-mongo-express
+    restart: always
+    ports:
+      - 8002:8080
+    env_file:
+      - ../env/mongo.env
+    environment:
+      ME_CONFIG_MONGODB_SERVER: playground-mongo
+
+networks:
+  default:
+    name: playground
