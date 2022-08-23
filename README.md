@@ -1,2 +1,3 @@
-# web-playground
-A boilerplate setup to quickly test or prototype throwaway experiments
+# Web Playground
+
+A boilerplate setup to quickly test or prototype throwaway experiments.
