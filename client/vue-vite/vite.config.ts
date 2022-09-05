@@ -9,12 +9,12 @@ export default defineConfig({
     plugins: [
         vue(),
         eslintPlugin({
-            formatter: 'stylish'
-        })
+            formatter: 'stylish',
+        }),
     ],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
-        }
-    }
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
+        },
+    },
 });

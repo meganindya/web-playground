@@ -6,11 +6,11 @@ module.exports = {
         'plugin:vue/vue3-essential',
         '@vue/eslint-config-typescript/recommended',
         '@vue/eslint-config-prettier',
-        '../.eslintrc.js'
+        '../.eslintrc.js',
     ],
 
     env: {
-        'vue/setup-compiler-macros': true
+        'vue/setup-compiler-macros': true,
     },
 
     rules: {
@@ -30,18 +30,18 @@ module.exports = {
                 ignoreTemplateLiterals: true,
                 ignoreRegExpLiterals: true,
                 ignoreHTMLAttributeValues: true,
-                ignoreHTMLTextContents: true
-            }
-        ]
+                ignoreHTMLTextContents: true,
+            },
+        ],
     },
 
     overrides: [
         {
             files: [
                 'cypress/integration/**.spec.{js,ts,jsx,tsx}',
-                'cypress/plugins/**.{js,ts,jsx,tsx}'
+                'cypress/plugins/**.{js,ts,jsx,tsx}',
             ],
-            extends: ['plugin:cypress/recommended']
-        }
-    ]
+            extends: ['plugin:cypress/recommended'],
+        },
+    ],
 };

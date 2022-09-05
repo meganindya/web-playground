@@ -8,7 +8,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'page-home',
-            component: PageHome
+            component: PageHome,
         },
 
         /*
@@ -20,9 +20,9 @@ const router = createRouter({
         {
             path: '/another',
             name: 'page-another',
-            component: () => import('@/views/PageAnother.vue')
-        }
-    ]
+            component: () => import('@/views/PageAnother.vue'),
+        },
+    ],
 });
 
 export default router;
